@@ -7,6 +7,7 @@ pipeline {
            }
         stage('checkout') {
             steps {
+             sh 'rm -rf *'
              sh 'git clone https://github.com/shb18911/hello-world-war.git'
                 
             }
