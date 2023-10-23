@@ -1,23 +1,22 @@
 pipeline {
     agent none
-    
+
     stages {
-        agent { 
-            lable 'slave1'
-           }
-        stage('checkout') {
-            steps {
-             sh 'rm -rf *'
-             sh 'git clone https://github.com/shb18911/hello-world-war.git'
-                
+        stage('Checkout') {
+            agent {
+                label 'slave1'
             }
-        stage('Build') {
-            agent { 
-            lable 'master'
-           }
             steps {
-             sh 'mvn clean pakage'
-                
+                sh 'rm -rf *'
+                sh 'git clone https://github.com/shb18911/hello-world-war.git'
+            }
+        }
+        stage('Build') {
+            agent {
+                label 'master'
+            }
+            steps {
+                sh 'mvn clean package'
             }
         }
     }
