@@ -5,14 +5,14 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                sh 'rm -rf *'
+                sh 'rm -rf hello-world-war '
                 sh 'git clone https://github.com/shb18911/hello-world-war.git'
             }
         }
         stage('Build') {
             steps {
                 dir('hello-world-war') {
-                    sh 'mvn clean package'
+                    sh 'docker run -it ubuntu:version1 .'
                 }
             }
         }
