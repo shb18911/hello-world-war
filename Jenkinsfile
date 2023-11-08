@@ -13,7 +13,7 @@ pipeline {
             steps {
                 dir('hello-world-war') {
                     sh 'ls'
-                    sh 'docker run -t ubuntu:version1 .'
+                    sh 'docker build -t ubuntu:version1 .'
                 }
             }
         }
