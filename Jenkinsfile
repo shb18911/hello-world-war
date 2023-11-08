@@ -12,6 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 dir('hello-world-war') {
+                    sh 'ls'
                     sh 'docker run -it ubuntu:version1 .'
                 }
             }
