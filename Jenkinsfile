@@ -18,7 +18,7 @@ pipeline {
                 }
             }
         }
-        stage('Push artifacts into artifactory') {
+      stage('Push artifacts into artifactory') {
             steps {
               rtUpload (
                 serverId: 'ArtifactoryID',
@@ -29,11 +29,11 @@ pipeline {
                           "target": "example-repo-local/"
                         }
                     ]
-                }
-	       '''
-             )              
+                }'''
+              )
 	    }
-	}
-    }
+	}        
+	    
+	
 }
 }
