@@ -13,6 +13,7 @@ pipeline {
             steps {
                 dir('hello-world-war') {
                     sh 'ls'
+		    sh 'docker --version'
                     sh 'docker build -t bharathsh100/hello-world-war:1.0.0 .'
                     
                 }
