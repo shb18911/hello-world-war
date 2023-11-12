@@ -13,23 +13,26 @@ pipeline {
             steps {
                 dir('hello-world-war') {
                     sh 'ls'
-		    sh 'docker --version'
-                    sh 'docker build -t bharathsh100/hello-world-war:1.0.0 .'
-                    
+    //                sh 'docker build -t ubuntu:version2 .'
+                      sh 'mvn clean package'
                 }
             }
         }
-        stage('Publish') {
+      stage('Push artifacts into artifactory') {
             steps {
-                dir('hello-world-war') {
-                    sh 'ls'
-                    sh 'docker login -u bharathsh100 -p dockersh100'
-                    sh 'docker push bharathsh100/hello-world-war:1.0.0'
-                    
-                }
-            }
-        }
-     
+              rtUpload (
+                serverId: 'ArtifactoryID',
+                spec: '''{
+                      "files": [
+                        {
+                          "pattern": "*.war",
+                          "target": "libs-release/"
+                        }
+                    ]
+                }'''
+              )
+	    }
+	}        
 	    
 	
 }
